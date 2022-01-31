@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<!--  회원 전제조회. -->
+<html layout:decorate="~{layouts/layout1}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        .error {
+            color: #bd2130;
+        }
+        .table{
+            width: 100%
+        }
+        .content{
+             width: 98%;
+             margin : 2%;
+             padding : 2%;
+        }
+
+        select{
+            margin-right:10px;
+        }
+
+        .pageul {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pageli {
+            list-style-type: none;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+
+
+    </style>
+</th:block>
+
+
+<div layout:fragment="content">
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>이메일</th>
+            <th>우편번호</th>
+            <th>도로명주소</th>
+            <th>지번</th>
+            <th>상세주소</th>
+            <th>추가주소정보</th>
+            <th>가입일</th>
+            <th>전화번호</th>
+            <th>구분</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="member : ${members}">
+            <td th:text="${member.id}"></td>
+            <td>
+                <a th:href="'/members/adminMembers/edit/'+${member.memID}" th:text="${member.memID}"></a>  <!--상세조회-->
+            </td>
+            <td th:text="${member.name}"></td>
+            <td th:text="${member.email}"></td>
+            <td th:text="${member.address?.postcode}"></td>
+            <td th:text="${member.address?.roadAddress}"></td>
+            <td th:text="${member.address?.jibunAddress}"></td>
+            <td th:text="${member.address?.detailAddress}"></td>
+            <td th:text="${member.address?.extraAddress}"></td>
+            <td th:text="${member.regTime}"></td>
+            <td th:text="${member.memPhone}"></td>
+            <td th:text="${member.role}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+    <div style="text-align: center">
+        <div class="pagination">
+            <ul class="pageul">
+                <li class="pageli" th:each="page : ${#numbers.sequence(0, totalPage-1)}">
+                    <a th:href="@{/members/adminMembers(page=${pageStat.index})}" th:text="${pageStat.index + 1}"></a>
+                </li>
+            </ul>
+        </div>
+
+        <form action="/members/admin/members/memberSearch" method="GET">
+            <div class="search">
+                <input name="keyword" placeholder="검색어" type="text">
+                <button>검색</button>
+            </div>
+        </form>
+        <br/>
+
+        <a class="nav-link" href="/members/new">
+            <input class="btn btn-primary" type="button" value="신규등록">
+        </a>
+    </div>
+
+</div> <!-- /container -->
+
+
+</html>

@@ -1,39 +1,75 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!--  로그인 로그아웃 과 role에 따른 메뉴 접근 권한  차이 : 스프링시큐리티  -->
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">  <!--스프링 시큐리티 태그 사용하기 위한 네임스페이스 추가  -->
 
 <div th:fragment="header">
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
-                aria-expanded="false" aria-label="Toggle navigation">
+        <button aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler" data-target="#navbarTogglerDemo03"
+                data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="/">Shop</a>
-
+        <a class="navbar-brand" href="/event">Event</a>
+        <a class="navbar-brand" href="/test">Test</a>
+        <a class="navbar-brand" href="/map">지도</a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <!--ROLE_ADMIN 관리자 계정으로 로그인 한 경우, 볼수 있는 메뉴 -->
                     <a class="nav-link" href="/admin/item/new">상품 등록</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <!--ROLE_ADMIN 관리자 계정으로 로그인 한 경우, 볼수 있는 메뉴 -->
                     <a class="nav-link" href="/admin/items">상품 관리</a>
                 </li>
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <!--ROLE_ADMIN 관리자 계정으로 로그인 한 경우, 볼수 있는 메뉴 -->
+                    <a class="nav-link" href="/members/adminMembers">회원 관리</a>
+                </li>
+                <!--                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                    <a class="nav-link" href="/members/admin/members">회원 관리2</a>
+                                </li>
+                -->
                 <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <!-- 로그인(인증)한 경우 , USER 와 ADMIN 볼수 있는 -->
                     <a class="nav-link" href="/cart">장바구니</a>
                 </li>
+                <!--
                 <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/my/member/update(form)}">마이페이지2</a>
+                </li>
+                -->
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <!-- 로그인(인증)한 경우 , USER 와 ADMIN 볼수 있는 -->
+                    <a class="nav-link" href="/members/mypage/edit">마이페이지</a>
+                </li>
+
+                <li class="nav-item">
+                    <!-- 로그인(인증)한 경우 , USER 와 ADMIN 볼수 있는 -->
+                    <a class="nav-link" href="/boardList/notices">게시판</a>
+                </li>
+                <!--
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" href="/boardList/notices2">게시판2</a>
+                </li> -->
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <!-- 로그인(인증)한 경우 , USER 와 ADMIN 볼수 있는   -->
                     <a class="nav-link" href="/orders">구매이력</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAnonymous()">
+                    <!--로그인 하지 않은 Anonymous 상태이면 볼수 있는 -->
                     <a class="nav-link" href="/members/login">로그인</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <!-- 로그인(인증)한 경우 , USER 와 ADMIN 볼수 있는   -->
                     <a class="nav-link" href="/members/logout">로그아웃</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
-                <input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" method="get" th:action="@{/}">
+                <input \ aria-label="Search" class="form-control mr-sm-2" name="searchQuery"
+                       placeholder="Search" type="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>

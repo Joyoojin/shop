@@ -1,6 +1,9 @@
 package com.shop.service;
 
+import com.shop.dto.CartDetailDto;
 import com.shop.dto.CartItemDto;
+import com.shop.dto.CartOrderDto;
+import com.shop.dto.OrderDto;
 import com.shop.entity.Cart;
 import com.shop.entity.CartItem;
 import com.shop.entity.Item;
@@ -12,15 +15,11 @@ import com.shop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import javax.persistence.EntityNotFoundException;
+import org.thymeleaf.util.StringUtils;
 
-import com.shop.dto.CartDetailDto;
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.thymeleaf.util.StringUtils;
-import com.shop.dto.CartOrderDto;
-import com.shop.dto.OrderDto;
 
 @Service
 @RequiredArgsConstructor
@@ -33,21 +32,21 @@ public class CartService {
     private final CartItemRepository cartItemRepository;
     private final OrderService orderService;
 
-    public Long addCart(CartItemDto cartItemDto, String email){
+    public Long addCart(CartItemDto cartItemDto, String email) {
 
         Item item = itemRepository.findById(cartItemDto.getItemId())
                 .orElseThrow(EntityNotFoundException::new);
         Member member = memberRepository.findByEmail(email);
 
         Cart cart = cartRepository.findByMemberId(member.getId());
-        if(cart == null){
+        if (cart == null) {
             cart = Cart.createCart(member);
             cartRepository.save(cart);
         }
 
         CartItem savedCartItem = cartItemRepository.findByCartIdAndItemId(cart.getId(), item.getId());
 
-        if(savedCartItem != null){
+        if (savedCartItem != null) {
             savedCartItem.addCount(cartItemDto.getCount());
             return savedCartItem.getId();
         } else {
@@ -58,13 +57,13 @@ public class CartService {
     }
 
     @Transactional(readOnly = true)
-    public List<CartDetailDto> getCartList(String email){
+    public List<CartDetailDto> getCartList(String email) {
 
         List<CartDetailDto> cartDetailDtoList = new ArrayList<>();
 
         Member member = memberRepository.findByEmail(email);
         Cart cart = cartRepository.findByMemberId(member.getId());
-        if(cart == null){
+        if (cart == null) {
             return cartDetailDtoList;
         }
 
@@ -73,20 +72,20 @@ public class CartService {
     }
 
     @Transactional(readOnly = true)
-    public boolean validateCartItem(Long cartItemId, String email){
+    public boolean validateCartItem(Long cartItemId, String email) {
         Member curMember = memberRepository.findByEmail(email);
         CartItem cartItem = cartItemRepository.findById(cartItemId)
                 .orElseThrow(EntityNotFoundException::new);
         Member savedMember = cartItem.getCart().getMember();
 
-        if(!StringUtils.equals(curMember.getEmail(), savedMember.getEmail())){
+        if (!StringUtils.equals(curMember.getEmail(), savedMember.getEmail())) {
             return false;
         }
 
         return true;
     }
 
-    public void updateCartItemCount(Long cartItemId, int count){
+    public void updateCartItemCount(Long cartItemId, int count) {
         CartItem cartItem = cartItemRepository.findById(cartItemId)
                 .orElseThrow(EntityNotFoundException::new);
 
@@ -99,13 +98,13 @@ public class CartService {
         cartItemRepository.delete(cartItem);
     }
 
-    public Long orderCartItem(List<CartOrderDto> cartOrderDtoList, String email){
+    public Long orderCartItem(List<CartOrderDto> cartOrderDtoList, String email) {
         List<OrderDto> orderDtoList = new ArrayList<>();
 
         for (CartOrderDto cartOrderDto : cartOrderDtoList) {
             CartItem cartItem = cartItemRepository
-                            .findById(cartOrderDto.getCartItemId())
-                            .orElseThrow(EntityNotFoundException::new);
+                    .findById(cartOrderDto.getCartItemId())
+                    .orElseThrow(EntityNotFoundException::new);
 
             OrderDto orderDto = new OrderDto();
             orderDto.setItemId(cartItem.getItem().getId());
@@ -116,8 +115,8 @@ public class CartService {
         Long orderId = orderService.orders(orderDtoList, email);
         for (CartOrderDto cartOrderDto : cartOrderDtoList) {
             CartItem cartItem = cartItemRepository
-                            .findById(cartOrderDto.getCartItemId())
-                            .orElseThrow(EntityNotFoundException::new);
+                    .findById(cartOrderDto.getCartItemId())
+                    .orElseThrow(EntityNotFoundException::new);
             cartItemRepository.delete(cartItem);
         }
 

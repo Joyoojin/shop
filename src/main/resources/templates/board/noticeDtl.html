@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<!-- 게시글 상세 조회 페이지 -->
+
+<html layout:decorate="~{layouts/layout1}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+
+    </style>
+</th:block>
+
+<div layout:fragment="content" style="margin-left:25%;margin-right:25%">
+    <form method="post" role="form" th:action="'/boardList/notice/' +${notice.noticeID}" th:object="${noticeFormDto}">
+
+        <input id="noticeID" th:value="${notice.noticeID}" type="hidden"> <!--
+              <input id="noticeID" th:value="${notice.noticeID}" type="hidden"> -->
+
+        <div class="d-flex">
+            <div class="wd50">
+                글 번호 : <span class="lead" th:text="${notice.noticeID}"/>
+                <p/>
+                제목 : <span class="h4" th:text="${notice.noticeTitle}"></span>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="jumbotron jumbotron-fluid mgt-30">
+            <div class="container">
+                <h4 class="display-5"></h4>
+                <p class="lead" th:text="${notice.noticeContent}"></p>
+            </div>
+        </div>
+        등록일 :<span th:text="${notice.regTime}"></span>
+        <p/>
+        조회수 : <span th:text="${notice.noticeHit}"></span>
+
+        <div style="text-align: center">
+
+            <div style="text-align: center">
+
+                <a class="btn btn-primary" th:href="@{'/boardList/notice/edit/' + ${notice.noticeID} }">수정</a>
+
+                <a href="/boardList/notices"> <input class="btn btn-primary" type="button" value="목록"> </a>
+
+                <button class="btn btn-primary" th:formaction="@{'/boardList/notice/delete/' + ${notice.noticeID} }"
+                        type="submit">삭제
+                </button>
+            </div>
+
+            <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
+
+
+        </div>
+    </form>
+</div>
+
+</html>

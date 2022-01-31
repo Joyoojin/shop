@@ -2,13 +2,11 @@ package com.shop.repository;
 
 import com.shop.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
-
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
-import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import java.util.List;
 
 public interface ItemRepository extends JpaRepository<Item, Long>,
         QuerydslPredicateExecutor<Item>, ItemRepositoryCustom {
@@ -25,8 +23,21 @@ public interface ItemRepository extends JpaRepository<Item, Long>,
             "%:itemDetail% order by i.price desc")
     List<Item> findByItemDetail(@Param("itemDetail") String itemDetail);
 
-    @Query(value="select * from item i where i.item_detail like " +
+    @Query(value = "select * from item i where i.item_detail like " +
             "%:itemDetail% order by i.price desc", nativeQuery = true)
     List<Item> findByItemDetailByNative(@Param("itemDetail") String itemDetail);
 
+
 }
+
+// 삭제
+// void delete(long id);
+
+//  @Modifying
+//  @Transactional
+//  long deleteByIdIn(Long itemId);
+
+//    @Transactional
+//    @Modifying
+//    @Query("delete from Item i where i.shop.id in :ids")
+//    void deleteAllByIdInQuery(@Param("ids") Long ids);

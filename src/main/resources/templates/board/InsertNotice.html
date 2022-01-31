@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<!--게시판 _ 등록, 수정   -->
+
+<html layout:decorate="~{layouts/layout1}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        .fieldError {
+            color: #bd2130;
+        }
+        .textareaGroup{
+            height : 60%;
+        }
+        #textarea{
+            height : 90%;
+        }
+        #boardForm{
+            height : 500px;
+        }
+
+
+
+
+    </style>
+</th:block>
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+    <!--  실패 했을 시, 에러 메지지 경고창 출력하는 javascript-->
+    <script th:inline="javascript">
+        $(document).ready(function(){
+            var errorMessage = [[${errorMessage}]];
+            if(errorMessage != null){
+                alert(errorMessage);
+            }
+        });
+
+
+
+    </script>
+
+</th:block>
+
+<div layout:fragment="content">
+
+    <form enctype="multipart/form-data" id="boardForm" method="post" role="form" th:object="${noticeFormDto}">
+
+        <p class="h2">
+            게시글 등록
+        </p>
+
+        <input th:field="*{noticeID}" th:value="${noticeID}" type="hidden">
+
+        <div class="form-group">
+            <label th:for="noticeTitle">제목</label>
+            <input class="form-control" placeholder="제목을 입력해주세요" th:field="*{noticeTitle}" type="text">
+            <p class="fieldError" th:errors="*{noticeTitle}" th:if="${#fields.hasErrors('noticeTitle')}">Incorrect
+                data</p>
+        </div>
+
+        <div class="form-group textareaGroup">
+            <label th:for="noticeContent">내용</label>
+            <textarea class="form-control" id="textarea" placeholder="내용을 입력해주세요"
+                      th:field="*{noticeContent}"> </textarea>
+            <p class="fieldError" th:errors="*{noticeContent}" th:if="${#fields.hasErrors('noticeContent')}">Incorrect
+                data</p>
+        </div>
+
+        <div style="text-align: center" th:if="${#strings.isEmpty(noticeFormDto.noticeID)}">
+            <button class="btn btn-primary" style="btn btn-primary" th:formaction="@{/boardList/admin/notice/new}"
+                    type="submit"> 등록
+            </button> <!-- 등록 -->
+        </div>
+
+        <div style="text-align: center" th:unless="${#strings.isEmpty(noticeFormDto.noticeID)}">        <!--  수정 페이지 -->
+
+            <button class="btn btn-primary" th:href="@{'/boardList/notice/edit/' + ${noticeFormDto.noticeID} }"
+                    type="submit">수정
+            </button>
+
+        </div>
+
+        <input class="btn btn-primary" onClick="javascript:history.go(-1);" type="button" value="취   소">
+
+        <input class="btn btn-primary" type="reset" value="다시쓰기">&nbsp;
+
+        <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
+
+    </form>
+
+</div>
+
+</html>
+
+<!--스프링 시큐리티 사용할 경우, 기본적으로 CSRF(Cross Site Request Forgery : 사이트간 위조 요청으로 사용자가
+자신의 의지와 상관없이 해커의 의도대로 수정,등록,삭제 등의 행위를 웹사이트 요청하게 하는 공격) 를 방어하기 위해 모든 post 방식의
+ 데이터 전송에는 CSRF토큰 값이 필요. CSRF 토큰은 실제 서버에서 허용한 요청이 맞는지 확인하기 위한 토큰.
+ 사용자의 세션에 임의의 값을 저장하여 요청마다 그 값을 포함하여 전송하면 서버에서 세션에
+ 저장된 값과 요청이 온 값이 일치하는지 확인하여 CRSF를 방어-->

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<!-- 전체 조회 페이지 -->
+<html layout:decorate="~{layouts/layout1}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        select{
+            margin-right:10px;
+        }
+
+        .pageul {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pageli {
+            list-style-type: none;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+
+    </style>
+</th:block>
+
+
+<div layout:fragment="content">
+
+    <p class="h2">
+        공지사항
+    </p>
+
+    <table class="table table-striped ">
+        <thead>
+        <tr>
+            <td>#</td>
+            <td>제목</td>
+            <td>등록자</td>
+            <td>등록일</td>
+            <td>조회수</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="notice : ${noticeList}">
+            <td th:text="${notice.noticeID}"></td>
+            <td>
+                <a th:href="'/boardList/notice/'+${notice.noticeID}" th:text="${notice.noticeTitle}"></a>  <!--상세조회-->
+            </td>
+            <td th:text="${notice.createdBy}"></td>
+            <td th:text="${notice.regTime}"></td>  <!-- 등록일 -->
+            <td th:text="${notice.noticeHit}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <form action="/boardList/notices/noticeSearch" method="GET">
+        <div class="search">
+            <input name="keyword" placeholder="키워드 입력" type="text">
+            <button>검색</button>
+        </div>
+    </form>
+    <br/>
+
+    <a class="nav-link" href="/boardList/admin/notice/new">
+        <input class="btn btn-primary" type="button" value="글쓰기">
+    </a>
+
+</div>
+
+</html>
+

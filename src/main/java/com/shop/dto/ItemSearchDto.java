@@ -4,8 +4,10 @@ import com.shop.constant.ItemSellStatus;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 public class ItemSearchDto {
+
 
     private String searchDateType;
 
@@ -16,3 +18,5 @@ public class ItemSearchDto {
     private String searchQuery = "";
 
 }
+
+//    private PCategory searchPCategory; /**  카테고리 별 검색 추가 */

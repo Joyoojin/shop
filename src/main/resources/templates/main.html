@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<!-- //( B11.회원가입 ) -->
+<html layout:decorate="~{layouts/layout1}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout1}">
+      xmlns:th="http://www.thymeleaf.org">
 
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
@@ -29,30 +30,34 @@
         .center{
             text-align:center;
         }
+
+
     </style>
 </th:block>
 
 <div layout:fragment="content">
-
-    <div id="carouselControls" class="carousel slide margin" data-ride="carousel">
+    <!--배너 -->
+    <div class="carousel slide margin" data-ride="carousel" id="carouselControls">
         <div class="carousel-inner">
             <div class="carousel-item active item">
-                <img class="d-block w-100 banner" src="https://user-images.githubusercontent.com/13268420/112147492-1ab76200-8c20-11eb-8649-3d2f282c3c02.png" alt="First slide">
+                <img alt="First slide"
+                     class="d-block w-100 banner"
+                     src="https://user-images.githubusercontent.com/13268420/112147492-1ab76200-8c20-11eb-8649-3d2f282c3c02.png">
             </div>
         </div>
     </div>
-
-    <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
-    <div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
+    <!--검색창 -->
+    <input name="searchQuery" th:value="${itemSearchDto.searchQuery}" type="hidden">
+    <div class="center" th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}">
         <p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'"></p>
     </div>
-
+    <!-- 아이템 사진들 출력 -->
     <div class="row">
         <th:block th:each="item, status: ${items.getContent()}">
             <div class="col-md-4 margin">
                 <div class="card">
-                    <a th:href="'/item/' +${item.id}" class="text-dark">
-                        <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemNm}" height="400">
+                    <a class="text-dark" th:href="'/item/' +${item.id}">
+                        <img class="card-img-top" height="400" th:alt="${item.itemNm}" th:src="${item.imgUrl}">
                         <div class="card-body">
                             <h4 class="card-title">[[${item.itemNm}]]</h4>
                             <p class="card-text">[[${item.itemDetail}]]</p>
@@ -63,27 +68,35 @@
             </div>
         </th:block>
     </div>
-
-    <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+    <!-- 페이징-->
+    <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})">
         <ul class="pagination justify-content-center">
 
             <li class="page-item" th:classappend="${items.number eq 0}?'disabled':''">
-                <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}" aria-label='Previous' class="page-link">
+                <a aria-label='Previous'
+                   class="page-link"
+                   th:href="@{'/' + '?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}">
                     <span aria-hidden='true'>Previous</span>
                 </a>
             </li>
 
-            <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page-1}?'active':''">
-                <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+            <li class="page-item" th:classappend="${items.number eq page-1}?'active':''"
+                th:each="page: ${#numbers.sequence(start, end)}">
+                <a class="page-link"
+                   th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1}}"
+                   th:inline="text">[[${page}]]</a>
             </li>
 
             <li class="page-item" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
-                <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}" aria-label='Next' class="page-link">
+                <a aria-label='Next'
+                   class="page-link"
+                   th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}">
                     <span aria-hidden='true'>Next</span>
                 </a>
             </li>
 
         </ul>
     </div>
+
 
 </div>

@@ -1,10 +1,10 @@
 package com.shop.repository;
 
 import com.shop.dto.ItemSearchDto;
+import com.shop.dto.MainItemDto;
 import com.shop.entity.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import com.shop.dto.MainItemDto;
 
 public interface ItemRepositoryCustom {
 
@@ -12,4 +12,8 @@ public interface ItemRepositoryCustom {
 
     Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable);
 
+
 }
+
+//  void deleteByItemId(Long itemId);
+// void delete(long id);       // 삭제

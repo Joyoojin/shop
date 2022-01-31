@@ -1,8 +1,5 @@
 package com.shop.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-
 import com.shop.dto.ItemSearchDto;
 import com.shop.dto.MainItemDto;
 import com.shop.service.ItemService;
@@ -13,7 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import java.util.Optional;
+//( 회원가입. 이벤트. 지도. 추가 )
 
 @Controller
 @RequiredArgsConstructor
@@ -21,8 +20,8 @@ public class MainController {
 
     private final ItemService itemService;
 
-    @GetMapping(value = "/")
-    public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
+    @GetMapping(value = "/")                //첫 화면인 메인페이지
+    public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model) {
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
         Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
@@ -31,7 +30,31 @@ public class MainController {
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
 
-        return "main";
+        return "main";                              //첫 화면 메인페이지
     }
 
+    @GetMapping(value = "/event")                   //이벤트페이지
+    public String event() {
+
+        return "board/event";
+    }
+
+    @GetMapping(value = "/test")                      //테스트페이지
+    public String test() {
+
+        return "test/index";
+    }
+
+    @GetMapping(value = "/map")                        //지도페이지
+    public String test2() {
+
+        return "test/map";
+    }
+
+ /*   삭제 :  @GetMapping(value = "/boardList")                   //게시판페이지
+    public String boardList() {
+
+        return "board/shopBoard";                        //shopBoard.html
+    }
+*/
 }

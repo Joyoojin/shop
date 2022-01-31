@@ -2,21 +2,26 @@ package com.shop.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 public class OrderItem extends BaseEntity {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "order_item_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL) // ( 추가..? cascade테스트 중...  )
     @JoinColumn(name = "item_id")
     private Item item;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL) // ( 추가..? cascade테스트 중...  )
     @JoinColumn(name = "order_id")
     private Order order;
 
@@ -24,7 +29,7 @@ public class OrderItem extends BaseEntity {
 
     private int count; //수량
 
-    public static OrderItem createOrderItem(Item item, int count){
+    public static OrderItem createOrderItem(Item item, int count) {
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
         orderItem.setCount(count);
@@ -33,8 +38,8 @@ public class OrderItem extends BaseEntity {
         return orderItem;
     }
 
-    public int getTotalPrice(){
-        return orderPrice*count;
+    public int getTotalPrice() {
+        return orderPrice * count;
     }
 
     public void cancel() {

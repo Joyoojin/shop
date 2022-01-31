@@ -1,0 +1,84 @@
+<!--이벤트 메인 페이지 -->
+<!DOCTYPE html>
+
+<html layout:decorate="~{layouts/layout1}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        .carousel-inner > .item {
+            height: 350px;
+        }
+        .margin{
+            margin-bottom:30px;
+        }
+        .banner{
+            height: 300px;
+            position: absolute; top:0; left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        a:hover{
+            text-decoration:none;
+        }
+        .center{
+            text-align:center;
+        }
+
+    </style>
+</th:block>
+
+<div layout:fragment="content">
+
+    <div class="carousel slide margin" data-ride="carousel" id="carouselControls">
+        <div class="carousel-inner">
+            <div class="carousel-item active item">
+                <a th:href="@{/board/event1}"><img alt="First slide"
+                                                   class="d-block w-100 banner"
+                                                   src="https://image.gsecretail.com/dp/data/image/origin/14/91/1642647129114/1642647129114_M.jpg">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="carousel slide margin" data-ride="carousel" id="carouselControls2">
+        <div class="carousel-inner">
+            <div class="carousel-item active item">
+                <a th:href="@{/board/event2}"><img alt="First slide"
+                                                   class="d-block w-100 banner"
+                                                   src="https://user-images.githubusercontent.com/13268420/112147492-1ab76200-8c20-11eb-8649-3d2f282c3c02.png">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <img alt="wer" class="card-img-top" height="400" src="/images/item/c1d6e65d-b68f-4175-b690-bb9402b8dd88.PNG">
+    <!-- 출력되는듯-->
+
+</div>
+
+
+<!-- 출력안됨. 삭제
+    <img src="/img/birds_icon.gif">
+    <img src="img/birds_icon.gif">
+    <img src="@{/img/birds_icon.gif}">
+    <img src="@{img/birds_icon.gif}">
+    <img th:src="@{/img/셔츠4.jpg}" />
+    <img src="img/birds_icon.gif"></br>
+    <img src="/img/birds_icon.gif"></br>
+    <img th:src="@{/img/birds_icon.gif}"></br>
+    <img th:src="@{img/birds_icon.gif}"></br>
+    <img src="/images/birds_icon.gif">
+    <img src="images/birds_icon.gif">
+    <img src="@{/images/birds_icon.gif}">
+    <img src="@{images/birds_icon.gif}">
+    <img th:src="@{/images/셔츠4.jpg}" />
+    <img src="images/birds_icon.gif"></br>
+    <img src="/images/birds_icon.gif"></br>
+    <img th:src="@{/images/birds_icon.gif}"></br>
+    <img th:src="@{images/birds_icon.gif}"></br>
+-->
+<!--     <img class="d-block w-100 banner" src="https://userdata.gsecretail.com/user/mail/welcome/220103/pc_001.jpg">  -->
+<!-- 출력되는듯-->

@@ -39,7 +39,11 @@ class CartTest {
         MemberFormDto memberFormDto = new MemberFormDto();
         memberFormDto.setEmail("test@email.com");
         memberFormDto.setName("홍길동");
-        memberFormDto.setAddress("서울시 마포구 합정동");
+        memberFormDto.setPostcode("16100");
+        memberFormDto.setRoadAddress("서울시 금천구 ");
+        memberFormDto.setJibunAddress("16번지 ");
+        memberFormDto.setDetailAddress("가산동 101-1");
+        memberFormDto.setExtraAddress("(가산디지털단지역)");
         memberFormDto.setPassword("1234");
         return Member.createMember(memberFormDto, passwordEncoder);
     }
