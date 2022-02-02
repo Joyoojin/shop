@@ -1,0 +1,187 @@
+html, body, ul,li,ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+* {
+    box-sizing: border-box;
+}
+body{
+    font-size: 15px;
+    min-width: 1480px;
+    padding: 50px 0 ;
+}
+ol{
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+li{
+    display: list-item;
+}
+em{
+    font-style: normal;
+}
+
+.cart {
+    display: block;
+    position: relative;
+    width: 1250px;
+    margin: 0 auto;
+    padding: 64px 0 100px 0;
+}
+
+.cart_title{
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.cart_tit_top {
+    overflow: hidden;
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+
+.cart_tit_top a{
+    color: #767676;
+    text-decoration-line: none;
+}
+.cart_tit_top ol{
+    display: inline-block;
+}
+.cart_tit_top ol li.on {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f60;
+}
+
+.cart_tit_top ol li {
+    float: left;
+    width: auto;
+    height: 48px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 45px;
+    letter-spacing: -1px;
+    color: #999;
+    margin-left: 10px;
+}
+.cart_tit_top ol li em {
+    font-weight: bold;
+    letter-spacing: 0;
+}
+
+table.my_cart{
+    clear: both;
+    border:  solid 1px #e0e0eb;
+    border-collapse: collapse;
+    background-color: #f5f5f0;
+    width: 100%;
+    font-size: 16px;
+}
+table.my_cart th{
+    border: solid 1px #e0e0eb;
+    padding: 10px 0;
+}
+
+table.my_cart td{
+    border: solid 1px #e0e0eb;
+    text-align: center;
+}
+
+table.my_cart2 {
+    border: solid 1px #e0e0eb;
+    border-collapse: collapse;
+    background-color: #f5f5f0;
+    width: 100%;
+    font-size: 15px;
+}
+
+table.my_cart2 th{
+    border: solid 1px #e0e0eb;
+}
+table.my_cart2 td{
+    border:  solid 1px #e0e0eb;
+    text-align: center;
+    background-color: #fff;
+}
+
+.price{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/*이용약관 ol태그 li*/
+.lifont{
+    font-size: 25px; color: gray;
+}
+
+
+/*bootstrp 버튼*/
+.btn{
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.default {
+    background-color: #fff;
+    border: solid 1px gray;
+    color: black;
+}
+.default:hover{
+    background: #ddd;
+}
+/*선택상품 삭제*/
+.backBtn{
+    background-color: #fff;
+    border: solid 1px gray;
+}
+/* 선택상품 장바구니*/
+.btnfloat{
+    float: left;
+}
+.btnfloat2{
+    float: right;
+}
+
+/*clear*/
+.clearboth{
+    clear: both;
+}
+
+/*쇼핑계속하기 버튼*/
+.footerbtn{
+    float: right;
+    font-weight: bolder;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+/*전체상품주문, 선택상품주문, 쇼핑계속하기*/
+#allProduct, #selectProduct,#footerbtn {
+    padding: 11px 30px;
+}
+
+#allProduct{
+    margin-left: 480px;
+    background-color: #264d73;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+}
+#selectProduct{
+    background-color: gray;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+}

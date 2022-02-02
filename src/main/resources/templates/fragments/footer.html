@@ -1,10 +1,79 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <div class="footer" th:fragment="footer">
-        <footer class="page-footer font-small cyan darken-3">
-            <div class="footer-copyright text-center py-3">
-                2020 Shopping Mall Example WebSite
+<html layout:decorate="~{layouts/footer}"
+      xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!---->
+<link href="./slick/style.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet" type="text/css"/>
+<link href="./slick/style.css" rel="stylesheet" type="text/css">
+
+<!-- 적용 왜 안되지
+<link rel="stylesheet" th:href="@{/css/footer.css}">  -->
+
+<script crossorigin="anonymous" src="https://kit.fontawesome.com/e11d53af1e.js"></script>
+
+<!-- 사용자 CSS 추가 적용안되는 것 같은.
+<th:block layout:fragment="css">
+    <style>
+
+    </style>
+</th:block> -->
+
+<div class="footer" id="footer" layout:fragment="footer" th:fragment="footer"> <!-- layout:fragment="footer"-->
+    <footer class="page-footer font-small cyan darken-3 footer-wrap">
+        <div class="footer-copyright text-center py-3">
+            <!--
+                        <div class="footer-link">
+                            <ul class="inner-box">
+                                <li><a href="#">공지사항</a></li>
+                                <li><a href="#">브랜드소개</a></li>
+
+                            </ul>
+                        </div>
+            -->
+            <div class="footer-inner inner-box">
+                <div class="footer-info">
+                    <img src="https://github.com/owo1214/Ourmeal/blob/master/img/logo1.png?raw=true" width="170px">
+                    <address>
+                        <p class="v2">서울시 금천구 가산동</p>
+                        <div>
+                            <p>상호: </p>
+                            <p>사업자등록번호 :</p>
+                            <p>전화 : 0000-0000</p>
+                        </div>
+                    </address>
+                    <p class="copy">Copyright ⓒ2022 00000 ALL Rights Reserved</p>
+                </div>
+                <div class="footer-customer">
+                    <div class="center">
+                        <p>고객센터</p>
+                        <span><a>0000-0000</a></span>
+                        <span>
+                        운영시간 ｜ 평일 오전 0시~저녁 0시<br/>
+                        점심시간 ｜ 낮 0시~오후 0시 <br/>
+                        (주말, 공휴일 휴무)
+                    </span>
+                    </div>
+
+                    <div class="sns-wrap">
+                        <div class="sns-box">
+
+                            <!--sns 표시 넣기-->
+                            <p>SNS</p>
+                            <a href="#">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
-        </footer>
-    </div>
+        </div>
+
+
+    </footer>
+</div>
 </html>

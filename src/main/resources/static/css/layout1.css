@@ -1,13 +1,21 @@
+/* 적용 ㅇ */
+
+*{
+
+}
 html {
     position: relative;
     min-height: 100%;
     margin: 0;
+
+
 }
 body {
     min-height: 100%;
 }
 .footer {
-    position: absolute;
+    list-style: none;
+    position: relative;
     left: 0;
     right: 0;
     bottom: 0;
@@ -20,4 +28,8 @@ body {
     margin-top: 50px;
     margin-left: 200px;
     margin-right: 200px;
+}
+
+.clear{
+    clear : both;
 }

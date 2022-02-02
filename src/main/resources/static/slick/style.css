@@ -1,0 +1,209 @@
+html,body {
+    width: 100%;
+    height: 100%;
+    }
+html, body, ul,li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+* {
+    box-sizing: border-box;
+}
+
+
+/*main*/
+.slider-div {
+    width: 100%;
+
+}
+.title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 30px;
+    padding-top: 20px;  
+}
+
+/*할인특가 / 신상품 */
+.a_slider{
+    background-color: rgba(226, 224, 217, 0.664);
+    padding-bottom:20px;
+}
+.slider {
+      width: 60%;
+      margin: 30px auto;
+      padding-bottom: 20px;
+}
+
+.slick-slide {
+    margin: 0px 0px 10px 0px;
+}
+
+.a_slider img {
+    margin-left: 10px;
+    width: 90%;
+    border-radius: 10%;
+}
+.b_slider img {
+    margin-left: 10px;
+    width: 90%;
+    border-radius: 10%;
+}
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
+
+
+.slick-slide {
+    transition: all ease-in-out .3s;
+  
+}
+  
+#id{
+    font-size: 20px;
+    margin: 10px 0px 0px 20px;
+    
+}
+
+#price{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(255, 24, 70);
+    margin: 0px 0px 0px 20px;
+}
+
+
+/*베스트상품*/
+.c_best{
+    background-color: rgba(226, 224, 217, 0.664);
+    padding-top: 5px;
+    padding-bottom: 30px;
+}
+
+.best {
+    width: 65%;
+    margin: 30px auto;
+    padding-top: 10px;
+}
+.item{
+    
+    display: flex;
+    padding-top: 10px;
+}
+
+.best_item img{
+    width: 90%;
+    border-radius: 10%
+    
+}
+
+.name{
+    font-size: 20px;
+    margin: 10px 0px 0px 10px;
+    color: rgb(54, 54, 54);
+}
+.price{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(29, 29, 29);
+    margin-left: 10px;
+}
+
+/*footer*/
+.footer-wrap .footer-link {
+    background: #f2f2f2;
+    border-bottom: 1px solid #EEE; 
+}
+
+.footer-wrap .footer-link ul {
+    font-size: 2; 
+    
+}
+
+.footer-wrap .footer-link ul li {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    padding-right: 10px; 
+    margin-left: 40px;
+}
+.footer-wrap .footer-link ul li a {
+    height: 50px;
+    line-height: 55px;
+    display: block;
+    color: #333;
+    font-size: 15px;    
+    text-decoration-line: none; 
+}
+
+.footer-inner{
+    display: flex;
+}
+
+.footer-info img{
+    margin: 20px 0px 0px 15px;
+}
+.footer-info address {
+    margin: 20px 0px 0px 35px;
+    line-height: 90%; 
+    font-size: 15px;
+    color: rgb(87, 87, 87);
+}
+
+.footer-info .copy{
+    margin: 20px 0px 40px 35px;
+    font-size: 13px;
+}
+.footer-customer{
+    margin: 5px auto;
+}
+
+.footer-wrap .footer-customer .center p{
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.footer-wrap .footer-customer .center span a {
+    display: inline-block;
+    font-size: 40px;
+    font-weight: 600;
+    color: #555;
+}
+.footer-wrap .footer-customer .center span {
+    font-size: 13px;
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 16px;
+    color: #777;
+    padding-right: 30px; 
+    
+}
+
+.footer-wrap .footer-customer .sns-wrap {
+    margin-top: 30px; 
+}
+
+.footer-wrap .footer-customer .sns-wrap .sns-box {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 98px; 
+}
+
+.footer-wrap .footer-customer .sns-wrap .sns-box p {
+    font-size: 16px;
+    margin-bottom: 11px;
+    font-weight: 600; 
+}
+.footer-wrap .footer-customer .sns-wrap .sns-box a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.sns-box a{
+    color: rgb(87, 87, 87);
+    font-size: 35px; 
+}

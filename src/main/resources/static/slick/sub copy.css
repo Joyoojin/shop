@@ -1,0 +1,113 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%;
+    
+}
+
+::before, ::after {
+    box-sizing: border-box; }
+
+
+.title{
+    border-top: 2px solid rgba(226, 222, 210, 0.664);
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+#content_box {
+	padding-top: 50px;
+}
+
+.items {
+	width: 350px;
+	border: solid 1px #d9d9d9;
+	margin: 30px 0 0 25px;
+	float: left;
+}
+.items li {
+	color: #666666;
+}
+.items .a {
+	font-weight: bold;
+	color: black;
+	margin-top: 20px;
+}
+.items .b {
+	font-size: 21px;
+    font-weight: bold;
+    color: #e64040;
+	margin-top: 5px;
+}
+.items .b span {
+	color: #a26f59;
+}
+
+.items .c {
+	font-size: 12px;
+	margin-top: 25px;
+
+}
+
+
+
+/*할인상품 sale_tag */
+.sale_tag{
+    top: 0px;
+    left: 0px;
+    opacity: 0.9;
+    position: absolute;
+
+    width: 70px;
+    height: 43px;
+    line-height: 43px;
+    background-image: linear-gradient(to right, #ff2626, #cf2727);
+    border-radius: 0px 0px 8px 0px;
+    letter-spacing: 0px;
+    box-shadow: 0 8px 12px rgb(0 0 0 / 8%);
+
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    vertical-align: top;
+    z-index: 1;
+}
+
+.item .price_sale{
+    padding: 0px 10px 14px;
+    font-size: 21px;
+    font-weight: bold;
+    color: #414040;
+    text-decoration:line-through;
+}
+.item .price p{
+    display: inline-block;
+}
+
+/*신상품 new_tag*/
+.new_tag{
+    top: 0px;
+    left: 0px;
+    opacity: 0.9;
+    position: absolute;
+
+    width: 70px;
+    height: 43px;
+    line-height: 43px;
+    background-image: linear-gradient(to right, #ffef94, #ffe056);
+    border-radius: 0px 0px 8px 0px;
+    letter-spacing: 0px;
+    box-shadow: 0 8px 12px rgb(0 0 0 / 8%);
+
+    display: inline-block;
+    text-align: center;
+    font-size: 21px;
+    font-weight: 500;
+    color: rgb(233, 6, 6);
+    vertical-align: top;
+    z-index: 1;
+}
