@@ -4,7 +4,7 @@
 
 <html layout:decorate="~{layouts/layout1}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
@@ -70,21 +70,25 @@
                 data</p>
         </div>
 
-        <div style="text-align: center" th:if="${#strings.isEmpty(noticeFormDto.noticeID)}">
-            <button class="btn btn-primary" style="btn btn-primary" th:formaction="@{/boardList/admin/notice/new}"
-                    type="submit"> 등록
+        <div style="text-align: center"
+             th:if="${#strings.isEmpty(noticeFormDto.noticeID)}">
+            <button class="btn btn-primary" style="btn btn-primary"
+                    th:formaction="@{/boardList/admin/notice/new}" type="submit"> 등록
             </button> <!-- 등록 -->
         </div>
 
-        <div style="text-align: center" th:unless="${#strings.isEmpty(noticeFormDto.noticeID)}">        <!--  수정 페이지 -->
+        <div style="text-align: center"
+             th:unless="${#strings.isEmpty(noticeFormDto.noticeID)}">
+            <!--  수정 페이지 -->
 
-            <button class="btn btn-primary" th:href="@{'/boardList/notice/edit/' + ${noticeFormDto.noticeID} }"
-                    type="submit">수정
+            <button class="btn btn-primary"
+                    th:href="@{'/boardList/notice/edit/' + ${noticeFormDto.noticeID} }" type="submit">수정
             </button>
 
         </div>
 
-        <input class="btn btn-primary" onClick="javascript:history.go(-1);" type="button" value="취   소">
+        <input class="btn btn-primary" onClick="javascript:history.go(-1);"
+               sec:authorize="hasAnyAuthority('ROLE_ADMIN')" type="button" value="취   소">
 
         <input class="btn btn-primary" type="reset" value="다시쓰기">&nbsp;
 

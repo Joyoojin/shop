@@ -80,20 +80,6 @@ public class MemberController {
     }
 
 
-    //회원조회
-/*    @GetMapping("/admin/members")
-    public String adminMembers2(Model model, @RequestParam(required = false, defaultValue = "0", value = "page") int page) {
-        Page<Member> members = memberService.getMembers(page);
-
-        int totalPage = members.getTotalPages();
-
-        model.addAttribute("totalPage", totalPage);
-        model.addAttribute("members", members.getContent());
-
-        return "member/memberList";
-    }
-*/
-
     /**
      * 검색
      */
@@ -116,7 +102,10 @@ public class MemberController {
     /* 회원 상세 페이지 - 수정하기 (관리자용) */
     @GetMapping(value = "/adminMembers/edit/{memID}")
     public String memberDtl(Model model, @PathVariable("memID") String memID) {
+
+
         MemberFormDto memberFormDto = memberService.getMemberDtl(memID);
+
         model.addAttribute("memberFormDto", memberFormDto);
 
         return "member/memberForm";
@@ -129,14 +118,15 @@ public class MemberController {
             return "member/memberForm";
         }
         try {
-            memberService.updateMember(memberFormDto);
+
+            memberService.updateMember(memberFormDto, passwordEncoder); //passwordEncoder 추가?
         } catch (Exception e) {
             model.addAttribute("errorMessage", "수정 중 에러가 발생하였습니다.");
             return "member/memberForm";
         }
         List<Member> members = memberService.findMembers();
         model.addAttribute("members", members);
-        return "redirect:/members/adminMembers";
+        return "member/memberForm"; //"redirect:/members/adminMembers";
     }
 
 
@@ -147,7 +137,6 @@ public class MemberController {
         List<Member> members = memberService.findMembers();
         model.addAttribute("members", members);
 
-        //return "redirect:/";
         return "redirect:/members/adminMembers";
     }
 

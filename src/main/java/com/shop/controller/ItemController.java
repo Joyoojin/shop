@@ -117,13 +117,9 @@ public class ItemController {
         model.addAttribute("item", itemFormDto);
         return "item/itemDtl";
     }
-
-
-}
-
-
+/*
 // 삭제 버튼
-    /*
+
     @RequestMapping(value = "/admin/item/delete/{itemId}", method = {RequestMethod.GET, RequestMethod.POST})
     public String delete(@PathVariable("itemId") Long itemId, Model model) {
         itemService.deleteItem(itemId);
@@ -132,12 +128,11 @@ public class ItemController {
 
         return "redirect:/admin/items";
     }
-*/
 
-/**
- * 상품 삭제2
- */
-/*    @RequestMapping(value = "/admin/productRemove/{itemId}", method = {RequestMethod.GET, RequestMethod.POST})
+
+/// 상품 삭제2
+
+    @RequestMapping(value = "/admin/productRemove/{itemId}", method = {RequestMethod.GET, RequestMethod.POST})
     public String delete(@PathVariable("itemId") Long itemId) {     // 해당 수정 페이지의 pID 값을 받아 삭제 한다.
 
         itemService.removeItem(itemId);
@@ -145,3 +140,6 @@ public class ItemController {
         return "redirect:/admin/items";
     }
 */
+}
+
+

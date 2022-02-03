@@ -13,6 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>shop</name>
     <description>Shop Project for Spring Boot</description>
+    <packaging>jar</packaging> <!-- aws 배포. 유진-->
     <properties>
         <java.version>11</java.version>
     </properties>

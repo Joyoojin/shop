@@ -3,6 +3,7 @@
 <!-- 전체 조회 페이지 -->
 <html layout:decorate="~{layouts/layout1}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:th="http://www.thymeleaf.org">
 
 
@@ -75,7 +76,7 @@
         </form>
         <br/>
 
-        <a class="nav-link" href="/boardList/admin/notice/new">
+        <a class="nav-link" href="/boardList/admin/notice/new" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
             <input class="btn btn-primary" type="button" value="글쓰기">
         </a>
     </div>

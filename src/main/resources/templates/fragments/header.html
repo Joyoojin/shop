@@ -62,6 +62,9 @@
 
 
 
+
+
+
             </script>
         </div>
         <!-- 원본-->
@@ -79,10 +82,12 @@
                         style="width: 50%;"></a>
             </div>
 
-            <a class="navbar-brand" href="/" style="cursor:pointer;">Shop</a>
+            <a class="navbar-brand" href="/" style="cursor:pointer;">Home</a>
             <a class="navbar-brand" href="/event" style="cursor:pointer;">Event</a>
             <a class="navbar-brand" href="/test" style="cursor:pointer;">Test</a>
-            <a class="navbar-brand" href="/map" style="cursor:pointer;">지도</a>
+            <a class="navbar-brand" href="/map" style="cursor:pointer;">About</a>
+
+
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 
 
@@ -100,19 +105,12 @@
                             <!--ROLE_ADMIN 관리자 계정으로 로그인 한 경우, 볼수 있는 메뉴 -->
                             <a class="nav-link" href="/members/adminMembers">회원 관리</a>
                         </li>
-                        <!--                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                            <a class="nav-link" href="/members/admin/members">회원 관리2</a>
-                                        </li>
-                        -->
+
                         <li class="nav-item" sec:authorize="isAuthenticated()">
                             <!-- 로그인(인증)한 경우 , USER 와 ADMIN 볼수 있는 -->
                             <a class="nav-link" href="/cart">장바구니</a>
                         </li>
-                        <!--
-                        <li class="nav-item" sec:authorize="isAuthenticated()">
-                            <a class="nav-link" th:href="@{/my/member/update(form)}">마이페이지2</a>
-                        </li>
-                        -->
+
                         <li class="nav-item" sec:authorize="isAuthenticated()">
                             <!-- 로그인(인증)한 경우 , USER 와 ADMIN 볼수 있는 -->
                             <a class="nav-link" href="/members/mypage/edit">마이페이지</a>
@@ -122,10 +120,7 @@
                             <!-- 로그인(인증)한 경우 , USER 와 ADMIN 볼수 있는 -->
                             <a class="nav-link" href="/boardList/notices">게시판</a>
                         </li>
-                        <!--
-                        <li class="nav-item" sec:authorize="isAuthenticated()">
-                            <a class="nav-link" href="/boardList/notices2">게시판2</a>
-                        </li> -->
+
                         <li class="nav-item" sec:authorize="isAuthenticated()">
                             <!-- 로그인(인증)한 경우 , USER 와 ADMIN 볼수 있는   -->
                             <a class="nav-link" href="/orders">구매이력</a>
@@ -139,6 +134,7 @@
                             <a class="nav-link" href="/members/logout">로그아웃</a>
                         </li>
                     </ul>
+
                 </nav>
                 <!-- 검색창 -->
 
@@ -152,6 +148,7 @@
 
 
             </div>
+
         </nav>
     </div>
 </div>

@@ -11,6 +11,7 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item, Long>,
         QuerydslPredicateExecutor<Item>, ItemRepositoryCustom {
 
+
     List<Item> findByItemNm(String itemNm);
 
     List<Item> findByItemNmOrItemDetail(String itemNm, String itemDetail);
@@ -29,6 +30,7 @@ public interface ItemRepository extends JpaRepository<Item, Long>,
 
 
 }
+//   void deleteByItemId(Long id);
 
 // 삭제
 // void delete(long id);

@@ -24,8 +24,7 @@ public class ItemImg extends BaseEntity {
 
     private String repimgYn; //대표 이미지 여부
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL) // ( 추가..? cascade테스트 중...  )
+    @ManyToOne(fetch = FetchType.LAZY) // ( 추가..? cascade테스트 중...  )
     @JoinColumn(name = "item_id")
     private Item item;
 

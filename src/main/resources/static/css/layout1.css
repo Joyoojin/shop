@@ -10,9 +10,11 @@ html {
 
 
 }
+
 body {
     min-height: 100%;
 }
+
 .footer {
     list-style: none;
     position: relative;
@@ -32,4 +34,101 @@ body {
 
 .clear{
     clear : both;
+}
+/*footer*/
+.footer-wrap .footer-link {
+    background: #f2f2f2;
+    border-bottom: 1px solid #EEE;
+}
+
+.footer-wrap .footer-link ul {
+    font-size: 2;
+
+}
+
+.footer-wrap .footer-link ul li {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    padding-right: 10px;
+    margin-left: 10px;
+}
+.footer-wrap .footer-link ul li a {
+    height: 20px;
+    line-height: 55px;
+    display: block;
+    color: #333;
+    font-size: 15px;
+    text-decoration-line: none;
+}
+
+.footer-inner{
+    display: flex;
+}
+
+.footer-info img{
+    margin: 20px 0px 0px 15px;
+}
+.footer-info address {
+    margin: 20px 0px 0px 35px;
+    line-height: 90%;
+    font-size: 15px;
+    color: rgb(87, 87, 87);
+}
+
+.footer-info .copy{
+    margin: 20px 0px 40px 35px;
+    font-size: 13px;
+}
+.footer-customer{
+    margin: 3px auto;
+}
+
+.footer-wrap .footer-customer .center p{
+    font-weight: bold;
+    margin-top: 20px;
+    margin-right: 380px
+}
+
+.footer-wrap .footer-customer .center span a {
+    display: inline-block;
+    font-size: 40px;
+    font-weight: 600;
+    color: #555;
+}
+.footer-wrap .footer-customer .center span {
+    font-size: 13px;
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 16px;
+    color: #777;
+    padding-right: 20px;
+    text-align: left;
+}
+
+
+.footer-wrap .footer-customer .sns-wrap {
+    margin-top: 30px;
+}
+
+.footer-wrap .footer-customer .sns-wrap .sns-box {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 98px;
+}
+
+.footer-wrap .footer-customer .sns-wrap .sns-box p {
+    font-size: 16px;
+    margin-bottom: 11px;
+    font-weight: 600;
+}
+.footer-wrap .footer-customer .sns-wrap .sns-box a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.sns-box a{
+    color: rgb(87, 87, 87);
+    font-size: 35px;
 }

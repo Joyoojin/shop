@@ -14,7 +14,7 @@ import javax.validation.constraints.NotEmpty;
 //(회원가입 ) 화면가입 화면으로부터 넘어오는 가입정보를 담을 dto 생성.
 
 /**
- * 비밀번호 4~20자로 . 비밀번호 재입력 . 우편번호 api 등..
+ * 비밀번호 4~20자로 . 비밀번호 재입력 . 우편번호 api 등.
  */
 
 @RepeatedField(field = "password")

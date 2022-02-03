@@ -20,7 +20,8 @@ public class MainController {
 
     private final ItemService itemService;
 
-    @GetMapping(value = "/")                //첫 화면인 메인페이지
+    //첫 화면인 메인페이지, category/는 원하는 항목 검색페이지
+    @GetMapping(value = {"/", "/category/items", "/category/items/{page}"})
     public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model) {
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
@@ -32,6 +33,7 @@ public class MainController {
 
         return "main";                              //첫 화면 메인페이지
     }
+
 
     @GetMapping(value = "/event")                   //이벤트페이지
     public String event() {
@@ -51,10 +53,5 @@ public class MainController {
         return "test/map";
     }
 
- /*   삭제 :  @GetMapping(value = "/boardList")                   //게시판페이지
-    public String boardList() {
 
-        return "board/shopBoard";                        //shopBoard.html
-    }
-*/
 }

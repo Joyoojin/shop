@@ -12,7 +12,6 @@ public interface ItemRepositoryCustom {
 
     Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable);
 
-
 }
 
 //  void deleteByItemId(Long itemId);

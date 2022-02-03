@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- 상품 전체 조회 페이지 -->
+<!-- 관리자 : 상품 전체 조회 페이지 -->
 <html layout:decorate="~{layouts/layout1}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org">
@@ -19,14 +19,20 @@
         function page(page){
             var searchDateType = $("#searchDateType").val();
             var searchSellStatus = $("#searchSellStatus").val();
+            var searchPCategory =  $("#searchPCategory").val();
+
             var searchBy = $("#searchBy").val();
             var searchQuery = $("#searchQuery").val();
 
             location.href="/admin/items/" + page + "?searchDateType=" + searchDateType
             + "&searchSellStatus=" + searchSellStatus
+            + "&searchPCategory=" + searchPCategory
             + "&searchBy=" + searchBy
             + "&searchQuery=" + searchQuery;
         }
+
+
+
 
 
     </script>
@@ -38,6 +44,8 @@
         select{
             margin-right:10px;
         }
+
+
 
 
 
@@ -121,6 +129,17 @@
                 <option value="createdBy">등록자</option>
             </select>
 
+            <select class="form-control" style="width:auto;" th:field="*{searchPCategory}">
+                <option value="">(카테고리)</option>
+                <option value="반찬">반찬</option>
+                <option value="김치">김치</option>
+                <option value="국">국</option>
+                <option value="메인요리">메인요리</option>
+                <option value="간편식">간편식</option>
+                <option value="정육">정육</option>
+                <option value="식재료">식재료</option>
+
+            </select>
             <input class="form-control" placeholder="검색어를 입력해주세요" th:field="*{searchQuery}" type="text">
             <button class="btn btn-primary" id="searchBtn" type="submit">검색</button>
         </div>

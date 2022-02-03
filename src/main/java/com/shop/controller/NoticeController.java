@@ -121,20 +121,3 @@ public class NoticeController {
     }
 }
 
-
-//삭제 예정
-/*전체 조회 페이지2  */
-/*    @GetMapping(value = {"/notices2"})
-    public String noticeManage2(Model model, @RequestParam(required = false, defaultValue = "0", value = "page") int page) {
-        try {
-            Page<Notice> noticeList = noticeService.getNoticeList(page);
-            int totalPage = noticeList.getTotalPages();
-
-            model.addAttribute("totalPage", totalPage);
-            model.addAttribute("noticeList", noticeList.getContent());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return "board/noticeList2";
-    }
-*/

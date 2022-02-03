@@ -1,5 +1,6 @@
 package com.shop.dto;
 
+import com.shop.constant.PCategory;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,5 +23,7 @@ public class ItemDto {
     private LocalDateTime regTime;
 
     private LocalDateTime updateTime;
+
+    private PCategory pCategory;      // 상품 분류        (+).추가!
 
 }

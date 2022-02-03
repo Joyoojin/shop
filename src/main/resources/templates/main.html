@@ -32,7 +32,39 @@
         }
 
 
+
     </style>
+</th:block>
+
+<!-- 사용자 스크립트 추가 ..?-->
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+
+        $(document).ready(function(){
+            $("#searchBtn").on("click",function(e) {
+                e.preventDefault();
+                page(0);
+            });
+        });
+
+        function page(page){
+            var searchDateType = $("#searchDateType").val();
+            var searchSellStatus = $("#searchSellStatus").val();
+            var searchPCategory =  $("#searchPCategory").val();
+            var searchBy = $("#searchBy").val();
+            var searchQuery = $("#searchQuery").val();
+
+            location.href="/category/items/" + page + "?searchDateType=" + searchDateType
+            + "&searchSellStatus=" + searchSellStatus
+            + "&searchPCategory=" + searchPCategory
+            + "&searchBy=" + searchBy
+            + "&searchQuery=" + searchQuery;
+        }
+
+
+
+
+    </script>
 </th:block>
 
 <div layout:fragment="content">
@@ -42,7 +74,7 @@
             <div class="carousel-item active item">
                 <img alt="First slide"
                      class="d-block w-100 banner"
-                     src="https://user-images.githubusercontent.com/13268420/112147492-1ab76200-8c20-11eb-8649-3d2f282c3c02.png">
+                     src="https://previews.123rf.com/images/radenmas/radenmas1605/radenmas160500067/57186211-%EB%B9%85-%EC%84%B8%EC%9D%BC-%EB%B0%B0%EB%84%88-%EB%B0%8F-%EB%B2%A0%EC%8A%A4%ED%8A%B8-%EC%98%A4%ED%8D%BC.jpg">
             </div>
         </div>
     </div>
@@ -57,7 +89,9 @@
             <div class="col-md-4 margin">
                 <div class="card">
                     <a class="text-dark" th:href="'/item/' +${item.id}">
-                        <img class="card-img-top" height="400" th:alt="${item.itemNm}" th:src="${item.imgUrl}">
+                        <img class="card-img-top" height="300" th:alt="${item.itemNm}" th:src="${item.imgUrl}"
+                        >
+                        <!-- 상품 사진 height 조절 -->
                         <div class="card-body">
                             <h4 class="card-title">[[${item.itemNm}]]</h4>
                             <p class="card-text">[[${item.itemDetail}]]</p>
@@ -98,5 +132,36 @@
         </ul>
     </div>
 
+
+    <!--검색조건 -->
+    <div class="form-inline justify-content-center" th:object="${itemSearchDto}">
+        <select class="form-control" style="width:auto;" th:field="*{searchDateType}">
+            <option value="all">최신순</option>
+            <option value="1d">1일</option>
+            <option value="1w">1주</option>
+            <option value="1m">1개월</option>
+        </select>
+        <select class="form-control" style="width:auto;" th:field="*{searchSellStatus}">
+            <option value="">판매상태(전체)</option>
+            <option value="SELL">판매</option>
+            <option value="SOLD_OUT">품절</option>
+        </select>
+
+        <select class="form-control" style="width:auto;" th:field="*{searchPCategory}">
+            <option value="">(카테고리)</option>
+            <option value="반찬">반찬</option>
+            <option value="김치">김치</option>
+            <option value="국">국</option>
+            <option value="메인요리">메인요리</option>
+            <option value="간편식">간편식</option>
+            <option value="정육">정육</option>
+            <option value="식재료">식재료</option>
+
+        </select>
+
+        <input class="form-control" placeholder="검색어를 입력해주세요" th:field="*{searchQuery}" type="text">
+        <button class="btn btn-primary" id="searchBtn" type="submit">검색</button>
+    </div>
+    <!-- 검색조건 끝-->
 
 </div>

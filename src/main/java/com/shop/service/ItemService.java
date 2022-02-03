@@ -26,6 +26,7 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
 
+
     private final ItemImgService itemImgService;
 
     private final ItemImgRepository itemImgRepository;
@@ -102,22 +103,31 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
+    //삭제하기 추가
+    @Transactional
+    public void deleteItem(Long id) {
+        itemRepository.deleteById(id);
+//        itemRepository.deleteAllByIdInQuery(id);
+    }
+
+//상품 삭제
+/*
+    public void removeItem(Long id) {
+        Item item = itemRepository.findById(id).get();
+        itemRepositoryCustomImpl2.deleteByItemId(id);
+//        itemImgRepository.deleteById(id);
+
+    }
+
+    //삭제하기 추가
+    @Transactional
+    public void deleteItem2(Long id) {
+        itemRepositoryCustomImpl2.deleteByItemId(id);
+        itemImgRepository.deleteById(id);
+
+        //        itemRepository.deleteAllByIdInQuery(id);
+    }
+*/
+
 
 }
-
-
-//삭제하기 추가
-//    @Transactional
-//    public void deleteItem(Long ids) {
-//        itemRepository.deleteById(id);
-//        itemRepository.deleteAllByIdInQuery(ids);
-//    }
-
-/**
- * 상품 삭제
- * <p>
- * public void removeItem(Long id) {
- * Item item = itemRepository.findById(id).get();
- * itemRepository.delete(item);
- * }
- */

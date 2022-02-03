@@ -1,6 +1,7 @@
 package com.shop.dto;
 
 import com.shop.constant.ItemSellStatus;
+import com.shop.constant.PCategory;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +18,7 @@ public class ItemSearchDto {
 
     private String searchQuery = "";
 
+    private PCategory searchPCategory; /**  카테고리 별 검색 추가 */
+
 }
 
-//    private PCategory searchPCategory; /**  카테고리 별 검색 추가 */

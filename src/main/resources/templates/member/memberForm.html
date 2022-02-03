@@ -14,6 +14,16 @@
         }
 
 
+
+
+
+
+
+
+
+
+
+
     </style>
 </th:block>
 
@@ -27,6 +37,14 @@
                 alert(errorMessage);
             }
         });
+
+    function revise(){
+
+            alert('수정 완료 되었습니다.');
+
+    }
+
+
 
 
 
@@ -71,9 +89,13 @@
             <div th:if="${#strings.isEmpty(memberFormDto.memID)}">
                 <button class="btn btn-primary" th:formaction="@{/members/new}" type="submit">등록</button>
             </div>
+            <div/>
+            <br>
+            <p/>
             <div th:unless="${#strings.isEmpty(memberFormDto.memID)}">
                 <button class="btn btn-primary"
-                        th:formaction="@{'/members/adminMembers/edit/' + ${memberFormDto.memID} }" type="submit">수정
+                        onclick="revise()" th:formaction="@{'/members/adminMembers/edit/' + ${memberFormDto.memID} }"
+                        type="submit">수정
                 </button>
 
                 <button class="btn btn-primary"

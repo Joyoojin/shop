@@ -66,15 +66,16 @@ public class Member extends BaseEntity {
     }
 
     // 회원정보 수정
-    public void updateMember(MemberFormDto memberFormDto) {
+    public void updateMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
 
         Address newAddress = new Address(memberFormDto.getPostcode(), memberFormDto.getRoadAddress(),
                 memberFormDto.getJibunAddress(), memberFormDto.getDetailAddress(),
                 memberFormDto.getExtraAddress());
 
+        String newPassword = passwordEncoder.encode(memberFormDto.getPassword());
 
         this.memPhone = memberFormDto.getMemPhone();
-        this.password = memberFormDto.getPassword();
+        this.password = newPassword;
         this.email = memberFormDto.getEmail();
         this.name = memberFormDto.getName();
         this.address = newAddress;

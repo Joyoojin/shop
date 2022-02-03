@@ -2,7 +2,7 @@
 <html layout:decorate="~{layouts/layout1}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org">
-<!-- 상품 등록 페이지 + 상품 수정 페이지 -->
+<!-- 관리자 : 상품 등록 페이지 + 상품 수정 페이지 -->
 
 <!-- 사용자 스크립트 추가 -->
 <th:block layout:fragment="script">
@@ -52,6 +52,8 @@
         .fieldError {
             color: #bd2130;
         }
+
+
 
 
 
@@ -121,7 +123,7 @@
         <p class="fieldError" th:errors="*{itemDetail}" th:if="${#fields.hasErrors('itemDetail')}">Incorrect data</p>
 
         <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
-            <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">
+            <div class="form-group" th:each="num: ${#numbers.sequence(1,3)}">
                 <div class="custom-file img-div">
                     <input class="custom-file-input" name="itemImgFile" type="file">
                     <label class="custom-file-label" th:text="상품이미지 + ${num}"></label>

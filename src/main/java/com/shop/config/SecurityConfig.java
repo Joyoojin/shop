@@ -46,9 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {   //WebSecuri
         //페이지 접근 권한
         http.authorizeRequests()            //시큐리티 처리에 httpServletRequest 이용
 
-                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/event/**", "/test/**", "/test2/**", "/map/**", "/boardList/**").permitAll() // permitAll 을 통해 모든 사용자가 로그인 없이 (메인페이지,회원관련url, 상품상세 페이지, 상품 이미지 불러오는 경로)등 경로로 접근 가능 설정.
+                .mvcMatchers("/", "/category/items/**", "/members/**", "/item/**", "/images/**", "/event/**", "/test/**", "/test2/**", "/map/**", "/boardList/**").permitAll() // permitAll 을 통해 모든 사용자가 로그인 없이 (메인페이지,회원관련url, 상품상세 페이지, 상품 이미지 불러오는 경로)등 경로로 접근 가능 설정.
                 /**유진 추가.  */
-                .mvcMatchers("/admin/**", "/members/adminMembers/**").hasRole("ADMIN")      //   /admin 으로 시작하는 경로는 ADMIN Role 인 경우에만 접근 가능 설정
+                .mvcMatchers("/admin/**", "/members/adminMembers/**", "/boardList/admin/notice/new", "/boardList/notice/edit/**").hasRole("ADMIN")      //   /admin 으로 시작하는 경로는 ADMIN Role 인 경우에만 접근 가능 설정
                 .anyRequest().authenticated()      // 그외 나머지 경로는 모두 인증 요구하도록 설정.
         ;
 
